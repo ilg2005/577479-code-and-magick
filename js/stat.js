@@ -26,6 +26,11 @@ var renderCloudText = function (ctx, msg, x, y, align) {
   ctx.fillText(msg, x, y);
 };
 
+var setBarHeight = function (ctx, i, times) {
+  var maxTime = Math.max.apply(null, times);
+  return BAR_MAX_HEIGHT * times[i] / maxTime;
+};
+
 var setBarColor = function (ctx, i, players) {
   if (players[i] === 'Вы') {
     ctx.fillStyle = BAR_COLOR_FOR_MAIN_PLAYER;
@@ -35,8 +40,7 @@ var setBarColor = function (ctx, i, players) {
 };
 
 var renderStatsColumn = function (ctx, i, players, times) {
-  var maxTime = Math.max.apply(null, times);
-  var barHeight = BAR_MAX_HEIGHT * times[i] / maxTime;
+  var barHeight = setBarHeight(ctx, i, times);
   ctx.fillStyle = setBarColor(ctx, i, players);
   ctx.fillRect(CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i, CLOUD_HEIGHT - 3 * SPACE - barHeight, BAR_WIDTH, barHeight);
 
