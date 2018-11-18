@@ -10,6 +10,7 @@ var CLOUD_TEXT_FONT = '16px PT Mono';
 var CLOUD_TEXT_COLOR = 'rgba(0, 0, 0, 1)';
 var BAR_MAX_HEIGHT = 150;
 var BAR_WIDTH = 40;
+var MAIN_PLAYER_NAME = 'Вы';
 var BAR_COLOR_FOR_MAIN_PLAYER = 'rgba(255, 0, 0, 1)';
 var BAR_INDENTATION = 50;
 var INDENTATION = 10;
@@ -32,7 +33,7 @@ var setBarHeight = function (ctx, i, times) {
 };
 
 var setBarColor = function (ctx, i, names) {
-  if (names[i] === 'Вы') {
+  if (names[i] === MAIN_PLAYER_NAME) {
     ctx.fillStyle = BAR_COLOR_FOR_MAIN_PLAYER;
   } else {
     ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
