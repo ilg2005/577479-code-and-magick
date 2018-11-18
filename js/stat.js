@@ -11,7 +11,16 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+var renderCloudText = function (ctx, msg, x, y, align) {
+  ctx.font = '16px PT Mono';
+  ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+  ctx.textAlign = align;
+  ctx.fillText(msg, x, y);
+};
+
 var renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + SPACE, CLOUD_Y + SPACE, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(255, 255, 255, 1)');
+  renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * SPACE, 'center');
+  renderCloudText(ctx, 'Список результатов:', CLOUD_X + SPACE, CLOUD_Y + 4 * SPACE, 'left');
 };
