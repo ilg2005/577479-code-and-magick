@@ -27,33 +27,33 @@ var renderCloudText = function (ctx, msg, x, y, align) {
   ctx.fillText(msg, x, y);
 };
 
-var setBarHeight = function (ctx, i, times) {
-  var maxTime = Math.max.apply(null, times);
-  return BAR_MAX_HEIGHT * times[i] / maxTime;
+var setBarHeight = function (ctx, i, results) {
+  var maxTime = Math.max.apply(null, results);
+  return BAR_MAX_HEIGHT * results[i] / maxTime;
 };
 
-var setBarColor = function (ctx, i, names) {
-  if (names[i] === MAIN_PLAYER_NAME) {
+var setBarColor = function (ctx, i, players) {
+  if (players[i] === MAIN_PLAYER_NAME) {
     ctx.fillStyle = BAR_COLOR_FOR_MAIN_PLAYER;
   } else {
     ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
   }
 };
 
-var renderStatsColumn = function (ctx, i, names, times) {
-  var barHeight = setBarHeight(ctx, i, times);
+var renderStatsColumn = function (ctx, i, players, results) {
+  var barHeight = setBarHeight(ctx, i, results);
   var barX = CLOUD_X + BAR_INDENTATION + (BAR_WIDTH + BAR_INDENTATION) * i;
   var barY = CLOUD_HEIGHT - 3 * INDENTATION - barHeight;
-  ctx.fillStyle = setBarColor(ctx, i, names);
+  ctx.fillStyle = setBarColor(ctx, i, players);
   ctx.fillRect(barX, barY, BAR_WIDTH, barHeight);
 
-  renderCloudText(ctx, names[i], barX, CLOUD_HEIGHT - INDENTATION);
-  renderCloudText(ctx, Math.round(times[i]), barX, CLOUD_HEIGHT - barHeight - 4 * INDENTATION);
+  renderCloudText(ctx, players[i], barX, CLOUD_HEIGHT - INDENTATION);
+  renderCloudText(ctx, Math.round(results[i]), barX, CLOUD_HEIGHT - barHeight - 4 * INDENTATION);
 };
 
-var renderStatsColumns = function (ctx, names, times) {
-  for (var i = 0; i < names.length; i++) {
-    renderStatsColumn(ctx, i, names, times);
+var renderStatsColumns = function (ctx, players, results) {
+  for (var i = 0; i < players.length; i++) {
+    renderStatsColumn(ctx, i, players, results);
   }
 };
 
