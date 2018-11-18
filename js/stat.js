@@ -32,6 +32,11 @@ var renderStatsColumn = function (ctx, i, players, times) {
 
 var renderStatsColumns = function (ctx, players, times) {
   for (var i = 0; i < players.length; i++) {
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
+    };
     renderStatsColumn(ctx, i, players, times);
   }
 };
