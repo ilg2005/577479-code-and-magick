@@ -4,6 +4,9 @@ var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var CLOUD_HEIGHT = 270;
 var CLOUD_WIDTH = 420;
+var BAR_MAX_HEIGHT = 150;
+var BAR_WIDTH = 40;
+var BAR_SPACE = 50;
 var SPACE = 10;
 
 var renderCloud = function (ctx, x, y, color) {
