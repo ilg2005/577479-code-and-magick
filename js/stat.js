@@ -41,11 +41,13 @@ var setBarColor = function (ctx, i, players) {
 
 var renderStatsColumn = function (ctx, i, players, times) {
   var barHeight = setBarHeight(ctx, i, times);
+  var barX = CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i;
+  var barY = CLOUD_HEIGHT - 3 * SPACE - barHeight;
   ctx.fillStyle = setBarColor(ctx, i, players);
-  ctx.fillRect(CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i, CLOUD_HEIGHT - 3 * SPACE - barHeight, BAR_WIDTH, barHeight);
+  ctx.fillRect(barX, barY, BAR_WIDTH, barHeight);
 
-  renderCloudText(ctx, players[i], CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i, CLOUD_HEIGHT - SPACE);
-  renderCloudText(ctx, Math.round(times[i]), CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i, CLOUD_HEIGHT - barHeight - 4 * SPACE);
+  renderCloudText(ctx, players[i], barX, CLOUD_HEIGHT - SPACE);
+  renderCloudText(ctx, Math.round(times[i]), barX, CLOUD_HEIGHT - barHeight - 4 * SPACE);
 };
 
 var renderStatsColumns = function (ctx, players, times) {
