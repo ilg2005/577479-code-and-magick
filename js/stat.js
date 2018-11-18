@@ -31,35 +31,35 @@ var setBarHeight = function (ctx, i, times) {
   return BAR_MAX_HEIGHT * times[i] / maxTime;
 };
 
-var setBarColor = function (ctx, i, players) {
-  if (players[i] === 'Вы') {
+var setBarColor = function (ctx, i, names) {
+  if (names[i] === 'Вы') {
     ctx.fillStyle = BAR_COLOR_FOR_MAIN_PLAYER;
   } else {
     ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
   }
 };
 
-var renderStatsColumn = function (ctx, i, players, times) {
+var renderStatsColumn = function (ctx, i, names, times) {
   var barHeight = setBarHeight(ctx, i, times);
   var barX = CLOUD_X + BAR_INDENTATION + (BAR_WIDTH + BAR_INDENTATION) * i;
   var barY = CLOUD_HEIGHT - 3 * INDENTATION - barHeight;
-  ctx.fillStyle = setBarColor(ctx, i, players);
+  ctx.fillStyle = setBarColor(ctx, i, names);
   ctx.fillRect(barX, barY, BAR_WIDTH, barHeight);
 
-  renderCloudText(ctx, players[i], barX, CLOUD_HEIGHT - INDENTATION);
+  renderCloudText(ctx, names[i], barX, CLOUD_HEIGHT - INDENTATION);
   renderCloudText(ctx, Math.round(times[i]), barX, CLOUD_HEIGHT - barHeight - 4 * INDENTATION);
 };
 
-var renderStatsColumns = function (ctx, players, times) {
-  for (var i = 0; i < players.length; i++) {
-    renderStatsColumn(ctx, i, players, times);
+var renderStatsColumns = function (ctx, names, times) {
+  for (var i = 0; i < names.length; i++) {
+    renderStatsColumn(ctx, i, names, times);
   }
 };
 
-var renderStatistics = function (ctx, players, times) {
+var renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + INDENTATION, CLOUD_Y + INDENTATION, CLOUD_SHADOW_COLOR);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
   renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * INDENTATION, 'center');
   renderCloudText(ctx, 'Список результатов:', CLOUD_X + INDENTATION, CLOUD_Y + 4 * INDENTATION, 'left');
-  renderStatsColumns(ctx, players, times);
+  renderStatsColumns(ctx, names, times);
 };
