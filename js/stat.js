@@ -57,7 +57,7 @@ var renderStatsColumns = function (ctx, players, results) {
   }
 };
 
-var renderStatistics = function (ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + INDENTATION, CLOUD_Y + INDENTATION, CLOUD_SHADOW_COLOR);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
   renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * INDENTATION, 'center');
