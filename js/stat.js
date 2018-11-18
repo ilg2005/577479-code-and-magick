@@ -11,8 +11,8 @@ var CLOUD_TEXT_COLOR = 'rgba(0, 0, 0, 1)';
 var BAR_MAX_HEIGHT = 150;
 var BAR_WIDTH = 40;
 var BAR_COLOR_FOR_MAIN_PLAYER = 'rgba(255, 0, 0, 1)';
-var BAR_SPACE = 50;
-var SPACE = 10;
+var BAR_INDENTATION = 50;
+var INDENTATION = 10;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -41,13 +41,13 @@ var setBarColor = function (ctx, i, players) {
 
 var renderStatsColumn = function (ctx, i, players, times) {
   var barHeight = setBarHeight(ctx, i, times);
-  var barX = CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i;
-  var barY = CLOUD_HEIGHT - 3 * SPACE - barHeight;
+  var barX = CLOUD_X + BAR_INDENTATION + (BAR_WIDTH + BAR_INDENTATION) * i;
+  var barY = CLOUD_HEIGHT - 3 * INDENTATION - barHeight;
   ctx.fillStyle = setBarColor(ctx, i, players);
   ctx.fillRect(barX, barY, BAR_WIDTH, barHeight);
 
-  renderCloudText(ctx, players[i], barX, CLOUD_HEIGHT - SPACE);
-  renderCloudText(ctx, Math.round(times[i]), barX, CLOUD_HEIGHT - barHeight - 4 * SPACE);
+  renderCloudText(ctx, players[i], barX, CLOUD_HEIGHT - INDENTATION);
+  renderCloudText(ctx, Math.round(times[i]), barX, CLOUD_HEIGHT - barHeight - 4 * INDENTATION);
 };
 
 var renderStatsColumns = function (ctx, players, times) {
@@ -57,9 +57,9 @@ var renderStatsColumns = function (ctx, players, times) {
 };
 
 var renderStatistics = function (ctx, players, times) {
-  renderCloud(ctx, CLOUD_X + SPACE, CLOUD_Y + SPACE, CLOUD_SHADOW_COLOR);
+  renderCloud(ctx, CLOUD_X + INDENTATION, CLOUD_Y + INDENTATION, CLOUD_SHADOW_COLOR);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
-  renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * SPACE, 'center');
-  renderCloudText(ctx, 'Список результатов:', CLOUD_X + SPACE, CLOUD_Y + 4 * SPACE, 'left');
+  renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * INDENTATION, 'center');
+  renderCloudText(ctx, 'Список результатов:', CLOUD_X + INDENTATION, CLOUD_Y + 4 * INDENTATION, 'left');
   renderStatsColumns(ctx, players, times);
 };
