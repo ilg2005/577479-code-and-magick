@@ -4,6 +4,7 @@ var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var CLOUD_HEIGHT = 270;
 var CLOUD_WIDTH = 420;
+var SPACE = 10;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -11,5 +12,6 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 var renderStatistics = function (ctx, names, times) {
+  renderCloud(ctx, CLOUD_X + SPACE, CLOUD_Y + SPACE, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(255, 255, 255, 1)');
 };
