@@ -30,10 +30,16 @@ var renderStatsColumn = function (ctx, i, players, times) {
   renderCloudText(ctx, Math.round(times[i]), CLOUD_X + BAR_SPACE + (BAR_WIDTH + BAR_SPACE) * i, CLOUD_HEIGHT - barHeight - 4 * SPACE);
 };
 
+var renderStatsColumns = function (ctx, players, times) {
+  for (var i = 0; i < players.length; i++) {
+    renderStatsColumn(ctx, i, players, times);
+  }
+};
+
 var renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + SPACE, CLOUD_Y + SPACE, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(255, 255, 255, 1)');
   renderCloudText(ctx, 'Ура вы победили!', CLOUD_X + CLOUD_WIDTH / 2, CLOUD_Y + 2 * SPACE, 'center');
   renderCloudText(ctx, 'Список результатов:', CLOUD_X + SPACE, CLOUD_Y + 4 * SPACE, 'left');
-  renderStatsColumn(ctx, 1, players, times);
+  renderStatsColumns(ctx, players, times);
 };
