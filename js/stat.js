@@ -6,6 +6,8 @@ var CLOUD_HEIGHT = 270;
 var CLOUD_WIDTH = 420;
 var CLOUD_COLOR = 'rgba(255, 255, 255, 1)';
 var CLOUD_SHADOW_COLOR = 'rgba(0, 0, 0, 0.7)';
+var CLOUD_TEXT_FONT = '16px PT Mono';
+var CLOUD_TEXT_COLOR = 'rgba(0, 0, 0, 1)';
 var BAR_MAX_HEIGHT = 150;
 var BAR_WIDTH = 40;
 var BAR_SPACE = 50;
@@ -17,8 +19,8 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 var renderCloudText = function (ctx, msg, x, y, align) {
-  ctx.font = '16px PT Mono';
-  ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+  ctx.font = CLOUD_TEXT_FONT;
+  ctx.fillStyle = CLOUD_TEXT_COLOR;
   ctx.textAlign = align;
   ctx.fillText(msg, x, y);
 };
