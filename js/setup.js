@@ -5,11 +5,22 @@ var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вал
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
+var setup = document.querySelector('.overlay');
+
 var getRandomItem = function (items) {
   var randomIndex = Math.round(Math.random() * (items.length - 1));
   return items[randomIndex];
 };
 
-var setup = document.querySelector('.overlay');
+var wizard = {
+  name: getRandomItem(FIRST_NAMES) + ' ' + getRandomItem(LAST_NAMES),
+  coatColor: getRandomItem(COAT_COLORS),
+  eyesColor: getRandomItem(EYES_COLORS)
+};
+
+console.log(wizard);
+
+
+
 
 setup.classList.remove('hidden');
