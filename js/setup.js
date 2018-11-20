@@ -12,15 +12,20 @@ var getRandomItem = function (items) {
   return items[randomIndex];
 };
 
-var wizard = {
-  name: getRandomItem(FIRST_NAMES) + ' ' + getRandomItem(LAST_NAMES),
-  coatColor: getRandomItem(COAT_COLORS),
-  eyesColor: getRandomItem(EYES_COLORS)
+var createRandomWizard = function () {
+  var randomWizard = {
+    name: getRandomItem(FIRST_NAMES) + ' ' + getRandomItem(LAST_NAMES),
+    coatColor: getRandomItem(COAT_COLORS),
+    eyesColor: getRandomItem(EYES_COLORS)
+  };
+  return randomWizard;
 };
 
-console.log(wizard);
+console.log(createRandomWizard());
 
+var createSimilarWizards = function () {
 
+};
 
 
 setup.classList.remove('hidden');
