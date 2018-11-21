@@ -6,7 +6,11 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var SIMILAR_WIZARDS_NUMBER = 4;
 
-var setup = document.querySelector('.overlay');
+var setupElement = document.querySelector('.overlay');
+var wizardTemplateElement = document.querySelector('#similar-wizard-template');
+var wizardTemplateNameElement = wizardTemplateElement.content.querySelector('.setup-similar-label');
+var wizardTemplateCoatElement = wizardTemplateElement.content.querySelector('.wizard-coat');
+var wizardTemplateEyesElement = wizardTemplateElement.content.querySelector('.wizard-eyes');
 
 var getRandomItem = function (items) {
   var randomIndex = Math.round(Math.random() * (items.length - 1));
@@ -30,6 +34,10 @@ var createSimilarWizards = function (wizardsNumber) {
   return randomWizards;
 };
 
-setup.classList.remove('hidden');
+setupElement.classList.remove('hidden');
 var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
-console.log(similarWizards);
+// console.log(similarWizards);
+
+for (var i = 0; i < similarWizards.length; i++) {
+  console.log(similarWizards[i]);
+}
