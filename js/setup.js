@@ -47,13 +47,15 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+var renderSimilarWizards = function (wizards) {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < wizards.length; i++) {
+    fragment.appendChild(renderWizard(wizards[i]));
+  }
+  similarListElement.appendChild(fragment);
+};
+
 showElement(setupElement);
 var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
-
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < similarWizards.length; i++) {
-  fragment.appendChild(renderWizard(similarWizards[i]));
-}
-similarListElement.appendChild(fragment);
-
+renderSimilarWizards(similarWizards);
 showElement(setupSimilarWizardsElement);
