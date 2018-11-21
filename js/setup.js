@@ -21,20 +21,20 @@ var getRandomItem = function (items) {
 };
 
 var createRandomWizard = function () {
-  var randomWizard = {
+  var wizard = {
     name: getRandomItem(FIRST_NAMES) + ' ' + getRandomItem(LAST_NAMES),
     coatColor: getRandomItem(COAT_COLORS),
     eyesColor: getRandomItem(EYES_COLORS)
   };
-  return randomWizard;
+  return wizard;
 };
 
 var createSimilarWizards = function (wizardsNumber) {
-  var randomWizards = [];
+  var wizards = [];
   for (var i = 0; i < wizardsNumber; i++) {
-    randomWizards.push(createRandomWizard());
+    wizards.push(createRandomWizard());
   }
-  return randomWizards;
+  return wizards;
 };
 
 var renderWizard = function (wizard) {
