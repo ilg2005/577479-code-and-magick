@@ -55,7 +55,11 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-showElement(setupElement);
-var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
-renderSimilarWizards(similarWizards);
-showElement(setupSimilarWizardsElement);
+var init = function () {
+  showElement(setupElement);
+  var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
+  renderSimilarWizards(similarWizards);
+  showElement(setupSimilarWizardsElement);
+};
+
+init();
