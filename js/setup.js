@@ -97,37 +97,41 @@ var setupWizardFireballClickHandler = function () {
   changeWizardFeature('fireball-color', FIREBALL_COLORS, setupWizardFireballElement);
 };
 
-setupOpenElement.addEventListener('click', function () {
-  showElement(setupElement);
-});
+var addEventListeners = function () {
 
-setupOpenElement.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE) {
+  setupOpenElement.addEventListener('click', function () {
     showElement(setupElement);
-  }
-});
+  });
 
-setupCloseElement.addEventListener('click', function () {
-  hideElement(setupElement);
-});
+  setupOpenElement.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      showElement(setupElement);
+    }
+  });
 
-setupCloseElement.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE) {
+  setupCloseElement.addEventListener('click', function () {
     hideElement(setupElement);
-  }
-});
+  });
 
-document.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
-    hideElement(setupElement);
-  }
-});
+  setupCloseElement.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      hideElement(setupElement);
+    }
+  });
 
-setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
-setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
-setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
+  document.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
+      hideElement(setupElement);
+    }
+  });
+
+  setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
+  setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
+  setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
+};
 
 var init = function () {
+  addEventListeners();
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   showElement(setupSimilarWizardsElement);
