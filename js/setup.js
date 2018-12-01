@@ -6,6 +6,7 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var SIMILAR_WIZARDS_NUMBER = 4;
 var ENTER_KEYCODE = 13;
+var ESC_KEYCODE = 27;
 
 var setupElement = document.querySelector('.overlay');
 var setupOpenElement = document.querySelector('.setup-open');
@@ -78,6 +79,12 @@ setupCloseElement.addEventListener('click', function () {
 
 setupCloseElement.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
+    hideElement(setupElement);
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
     hideElement(setupElement);
   }
 });
