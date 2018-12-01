@@ -128,13 +128,14 @@ var addEventListenersOnSetupOpen = function () {
 var listenSetupOpenEvent = function () {
   setupOpenElement.addEventListener('click', function () {
     showElement(setupElement);
+    addEventListenersOnSetupOpen();
   });
   setupOpenElement.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       showElement(setupElement);
+      addEventListenersOnSetupOpen();
     }
   });
-  addEventListenersOnSetupOpen();
 };
 
 var init = function () {
