@@ -69,23 +69,31 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
+var changeHiddenInputValue = function (inputName, newValue) {
+  var selectorString = 'input' + '\[name=\"' + inputName + '\"\]';
+  document.querySelector(selectorString).value = newValue;
+};
+
 var setupWizardCoatClickHandler = function () {
-  setupWizardCoat.style.fill = getRandomItem(COAT_COLORS);
+  var wizardCoatColor = getRandomItem(COAT_COLORS);
+  setupWizardCoat.style.fill = wizardCoatColor;
+  changeHiddenInputValue('coat-color', wizardCoatColor);
 };
 
 var setupWizardEyesClickHandler = function () {
-  setupWizardEyes.style.fill = getRandomItem(EYES_COLORS);
+  var wizardEyesColor = getRandomItem(EYES_COLORS);
+  setupWizardEyes.style.fill = wizardEyesColor;
+  changeHiddenInputValue('eyes-color', wizardEyesColor);
 };
 
 var setupWizardFireballClickHandler = function () {
-  setupWizardFireball.style.backgroundColor = getRandomItem(FIREBALL_COLORS);
+  var wizardFireballColor = getRandomItem(FIREBALL_COLORS);
+  setupWizardFireball.style.backgroundColor = wizardFireballColor;
+  changeHiddenInputValue('fireball-color', wizardFireballColor);
 };
 
 setupOpenElement.addEventListener('click', function () {
   showElement(setupElement);
-  setupWizardCoat.addEventListener('click', setupWizardCoatClickHandler);
-  setupWizardEyes.addEventListener('click', setupWizardEyesClickHandler);
-  setupWizardFireball.addEventListener('click', setupWizardFireballClickHandler);
 });
 
 setupOpenElement.addEventListener('keydown', function (evt) {
@@ -109,6 +117,10 @@ document.addEventListener('keydown', function (evt) {
     hideElement(setupElement);
   }
 });
+
+setupWizardCoat.addEventListener('click', setupWizardCoatClickHandler);
+setupWizardEyes.addEventListener('click', setupWizardEyesClickHandler);
+setupWizardFireball.addEventListener('click', setupWizardFireballClickHandler);
 
 var init = function () {
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
