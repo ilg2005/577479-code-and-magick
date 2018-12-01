@@ -56,7 +56,7 @@ var renderSimilarWizards = function (wizards) {
 };
 
 var init = function () {
-  showElement(setupElement);
+  //showElement(setupElement);
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   showElement(setupSimilarWizardsElement);
