@@ -5,8 +5,10 @@ var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вал
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 var SIMILAR_WIZARDS_NUMBER = 4;
+var ENTER_KEYCODE = 13;
 
 var setupElement = document.querySelector('.overlay');
+var setupOpenElement = document.querySelector('.setup-open');
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
@@ -55,8 +57,18 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
+setupOpenElement.addEventListener('click', function () {
+  showElement(setupElement);
+});
+
+setupOpenElement.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    showElement(setupElement);
+  }
+});
+
 var init = function () {
-  //showElement(setupElement);
+  // showElement(setupElement);
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   showElement(setupSimilarWizardsElement);
