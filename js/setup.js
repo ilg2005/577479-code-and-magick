@@ -9,6 +9,7 @@ var ENTER_KEYCODE = 13;
 
 var setupElement = document.querySelector('.overlay');
 var setupOpenElement = document.querySelector('.setup-open');
+var setupCloseElement = setupElement.querySelector('.setup-close');
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
