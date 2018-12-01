@@ -85,6 +85,25 @@ var changeWizardFeature = function (feature, features, featureElement) {
   }
 };
 
+var setupCloseClickHandler = function () {
+  hideElement(setupElement);
+  document.removeEventListener('keydown', documentKeydownEscHandler);
+};
+
+var setupCloseKeydownEnterHandler = function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    hideElement(setupElement);
+  }
+  document.removeEventListener('keydown', documentKeydownEscHandler);
+};
+
+var documentKeydownEscHandler = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
+    hideElement(setupElement);
+  }
+  document.removeEventListener('keydown', documentKeydownEscHandler);
+};
+
 var setupWizardCoatClickHandler = function () {
   changeWizardFeature('coat-color', COAT_COLORS, setupWizardCoatElement);
 };
@@ -97,41 +116,29 @@ var setupWizardFireballClickHandler = function () {
   changeWizardFeature('fireball-color', FIREBALL_COLORS, setupWizardFireballElement);
 };
 
-var addEventListeners = function () {
-
-  setupOpenElement.addEventListener('click', function () {
-    showElement(setupElement);
-  });
-
-  setupOpenElement.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      showElement(setupElement);
-    }
-  });
-
-  setupCloseElement.addEventListener('click', function () {
-    hideElement(setupElement);
-  });
-
-  setupCloseElement.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      hideElement(setupElement);
-    }
-  });
-
-  document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
-      hideElement(setupElement);
-    }
-  });
-
+var addEventListenersOnSetupOpen = function () {
+  setupCloseElement.addEventListener('click', setupCloseClickHandler);
+  setupCloseElement.addEventListener('keydown', setupCloseKeydownEnterHandler);
+  document.addEventListener('keydown', documentKeydownEscHandler);
   setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
   setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
   setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
 };
 
+var listenSetupOpenEvent = function () {
+  setupOpenElement.addEventListener('click', function () {
+    showElement(setupElement);
+  });
+  setupOpenElement.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      showElement(setupElement);
+    }
+  });
+  addEventListenersOnSetupOpen();
+};
+
 var init = function () {
-  addEventListeners();
+  listenSetupOpenEvent();
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   showElement(setupSimilarWizardsElement);
