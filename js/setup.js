@@ -4,6 +4,7 @@ var FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'К�
 var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var SIMILAR_WIZARDS_NUMBER = 4;
 var ENTER_KEYCODE = 13;
 var ESC_KEYCODE = 27;
@@ -14,6 +15,8 @@ var setupCloseElement = setupElement.querySelector('.setup-close');
 var setupWizard = setupElement.querySelector('.setup-wizard');
 var setupWizardCoat = setupWizard.querySelector('.wizard-coat');
 var setupWizardEyes = setupWizard.querySelector('.wizard-eyes');
+var setupWizardFireball = setupElement.querySelector('.setup-fireball-wrap');
+
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
@@ -66,14 +69,23 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-var setupWizardItemClickHandler = function (item, items) {
-  item.style.fill = getRandomItem(items);
+var setupWizardCoatClickHandler = function () {
+  setupWizardCoat.style.fill = getRandomItem(COAT_COLORS);
+};
+
+var setupWizardEyesClickHandler = function () {
+  setupWizardEyes.style.fill = getRandomItem(EYES_COLORS);
+};
+
+var setupWizardFireballClickHandler = function () {
+  setupWizardFireball.style.backgroundColor = getRandomItem(FIREBALL_COLORS);
 };
 
 setupOpenElement.addEventListener('click', function () {
   showElement(setupElement);
-  setupWizardCoat.addEventListener('click', setupWizardItemClickHandler.bind(this, setupWizardCoat, COAT_COLORS));
-  setupWizardEyes.addEventListener('click', setupWizardItemClickHandler.bind(this, setupWizardEyes, EYES_COLORS));
+  setupWizardCoat.addEventListener('click', setupWizardCoatClickHandler);
+  setupWizardEyes.addEventListener('click', setupWizardEyesClickHandler);
+  setupWizardFireball.addEventListener('click', setupWizardFireballClickHandler);
 });
 
 setupOpenElement.addEventListener('keydown', function (evt) {
