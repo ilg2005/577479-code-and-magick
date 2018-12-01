@@ -18,6 +18,10 @@ var showElement = function (element) {
   element.classList.remove('hidden');
 };
 
+var hideElement = function (element) {
+  element.classList.add('hidden');
+};
+
 var getRandomItem = function (items) {
   var randomIndex = Math.round(Math.random() * (items.length - 1));
   return items[randomIndex];
@@ -68,8 +72,17 @@ setupOpenElement.addEventListener('keydown', function (evt) {
   }
 });
 
+setupCloseElement.addEventListener('click', function () {
+  hideElement(setupElement);
+});
+
+setupCloseElement.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    hideElement(setupElement);
+  }
+});
+
 var init = function () {
-  // showElement(setupElement);
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   showElement(setupSimilarWizardsElement);
