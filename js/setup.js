@@ -13,6 +13,7 @@ var setupOpenElement = document.querySelector('.setup-open');
 var setupCloseElement = setupElement.querySelector('.setup-close');
 var setupWizard = setupElement.querySelector('.setup-wizard');
 var setupWizardCoat = setupWizard.querySelector('.wizard-coat');
+var setupWizardEyes = setupWizard.querySelector('.wizard-eyes');
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
@@ -65,13 +66,14 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-var setupWizardCoatClickHandler = function () {
-  setupWizardCoat.style.fill = getRandomItem(COAT_COLORS);
+var setupWizardItemClickHandler = function (item, items) {
+  item.style.fill = getRandomItem(items);
 };
 
 setupOpenElement.addEventListener('click', function () {
   showElement(setupElement);
-  setupWizardCoat.addEventListener('click', setupWizardCoatClickHandler);
+  setupWizardCoat.addEventListener('click', setupWizardItemClickHandler.bind(this, setupWizardCoat, COAT_COLORS));
+  setupWizardEyes.addEventListener('click', setupWizardItemClickHandler.bind(this, setupWizardEyes, EYES_COLORS));
 });
 
 setupOpenElement.addEventListener('keydown', function (evt) {
