@@ -11,6 +11,8 @@ var ESC_KEYCODE = 27;
 var setupElement = document.querySelector('.overlay');
 var setupOpenElement = document.querySelector('.setup-open');
 var setupCloseElement = setupElement.querySelector('.setup-close');
+var setupWizard = setupElement.querySelector('.setup-wizard');
+var setupWizardCoat = setupWizard.querySelector('.wizard-coat');
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
@@ -63,8 +65,13 @@ var renderSimilarWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
+var setupWizardCoatClickHandler = function () {
+  setupWizardCoat.style.fill = getRandomItem(COAT_COLORS);
+};
+
 setupOpenElement.addEventListener('click', function () {
   showElement(setupElement);
+  setupWizardCoat.addEventListener('click', setupWizardCoatClickHandler);
 });
 
 setupOpenElement.addEventListener('keydown', function (evt) {
