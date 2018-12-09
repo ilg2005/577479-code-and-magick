@@ -2,6 +2,7 @@
 
 var setupElement = document.querySelector('.setup');
 var userPicElement = setupElement.querySelector('.setup-user-pic');
+var userPicUploadElement = setupElement.querySelector('.upload input');
 
 var userPicElementMouseDownHandler = function (evtMouseDown) {
   evtMouseDown.preventDefault();
@@ -28,8 +29,10 @@ var userPicElementMouseDownHandler = function (evtMouseDown) {
     setupElement.style.top = (setupElement.offsetTop + shift.y) + 'px';
   };
 
-  var documentMouseupHandler = function (evtMouseUp) {
-    evtMouseUp.preventDefault();
+  var documentMouseupHandler = function () {
+    if (dragged === false) {
+      userPicUploadElement.click();
+    }
     document.removeEventListener('mousemove', documentMouseMoveHandler);
     document.removeEventListener('mouseup', documentMouseupHandler);
   };

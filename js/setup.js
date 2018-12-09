@@ -9,7 +9,7 @@ var SIMILAR_WIZARDS_NUMBER = 4;
 var ENTER_KEYCODE = 13;
 var ESC_KEYCODE = 27;
 
-var setupElement = document.querySelector('.overlay');
+var setupElement = document.querySelector('.setup');
 var setupOpenElement = document.querySelector('.setup-open');
 var setupCloseElement = setupElement.querySelector('.setup-close');
 
