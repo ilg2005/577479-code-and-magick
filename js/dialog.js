@@ -28,6 +28,12 @@ var userPicElementMouseDownHandler = function (evtMouseDown) {
     setupElement.style.top = (setupElement.offsetTop + shift.y) + 'px';
   };
 
+  var documentMouseupHandler = function (evtMouseUp) {
+    evtMouseUp.preventDefault();
+    document.removeEventListener('mousemove', documentMouseMoveHandler);
+    document.removeEventListener('mouseup', documentMouseupHandler);
+  };
+
   document.addEventListener('mousemove', documentMouseMoveHandler);
   document.addEventListener('mouseup', documentMouseupHandler);
 };
