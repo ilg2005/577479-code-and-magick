@@ -3,9 +3,9 @@
 var setupElement = document.querySelector('.setup');
 var userPicElement = setupElement.querySelector('.setup-user-pic');
 
-
 var userPicElementMouseDownHandler = function (evtMouseDown) {
   evtMouseDown.preventDefault();
+
   var startMouseCoordinates = {
     x: evtMouseDown.clientX,
     y: evtMouseDown.clientY
@@ -39,4 +39,3 @@ var userPicElementMouseDownHandler = function (evtMouseDown) {
 };
 
 userPicElement.addEventListener('mousedown', userPicElementMouseDownHandler);
-

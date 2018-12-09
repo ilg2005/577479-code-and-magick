@@ -22,6 +22,16 @@ var wizardTemplateElement = document.querySelector('#similar-wizard-template').c
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
+var initialSetupElementPosition = {
+  left: setupElement.style.left,
+  top: setupElement.style.top
+};
+
+var restoreInitialSetupElementPosition = function () {
+  setupElement.style.left = initialSetupElementPosition.left;
+  setupElement.style.top = initialSetupElementPosition.top;
+};
+
 var showElement = function (element) {
   element.classList.remove('hidden');
 };
@@ -117,6 +127,7 @@ var setupWizardFireballClickHandler = function () {
 };
 
 var addEventListenersOnSetupOpen = function () {
+  restoreInitialSetupElementPosition();
   setupCloseElement.addEventListener('click', setupCloseClickHandler);
   setupCloseElement.addEventListener('keydown', setupCloseKeydownEnterHandler);
   document.addEventListener('keydown', documentKeydownEscHandler);
