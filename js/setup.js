@@ -14,6 +14,7 @@ var setupOpenElement = document.querySelector('.setup-open');
 var setupCloseElement = setupElement.querySelector('.setup-close');
 
 var setupWizardElement = setupElement.querySelector('.setup-wizard');
+var setupWizardNameElement = setupElement.querySelector('.setup-user-name');
 var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
 var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
 var setupWizardFireballElement = setupElement.querySelector('.setup-fireball-wrap');
@@ -108,10 +109,10 @@ var setupCloseKeydownEnterHandler = function (evt) {
 };
 
 var documentKeydownEscHandler = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
+  if (evt.keyCode === ESC_KEYCODE && evt.target !== setupWizardNameElement) {
     hideElement(setupElement);
+    document.removeEventListener('keydown', documentKeydownEscHandler);
   }
-  document.removeEventListener('keydown', documentKeydownEscHandler);
 };
 
 var setupWizardCoatClickHandler = function () {

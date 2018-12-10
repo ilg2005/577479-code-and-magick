@@ -29,16 +29,16 @@ var userPicElementMouseDownHandler = function (evtMouseDown) {
     setupElement.style.top = (setupElement.offsetTop + shift.y) + 'px';
   };
 
-  var documentMouseupHandler = function () {
+  var documentMouseUpHandler = function () {
     if (dragged === false) {
       userPicUploadElement.click();
     }
     document.removeEventListener('mousemove', documentMouseMoveHandler);
-    document.removeEventListener('mouseup', documentMouseupHandler);
+    document.removeEventListener('mouseup', documentMouseUpHandler);
   };
 
   document.addEventListener('mousemove', documentMouseMoveHandler);
-  document.addEventListener('mouseup', documentMouseupHandler);
+  document.addEventListener('mouseup', documentMouseUpHandler);
 };
 
 userPicElement.addEventListener('mousedown', userPicElementMouseDownHandler);
