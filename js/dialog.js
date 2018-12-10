@@ -8,10 +8,6 @@
   var setupCloseElement = window.utilities.setupElement.querySelector('.setup-close');
   var setupWizardNameElement = window.utilities.setupElement.querySelector('.setup-user-name');
 
-  var showElement = function (element) {
-    element.classList.remove('hidden');
-  };
-
   var hideElement = function (element) {
     element.classList.add('hidden');
   };
@@ -54,12 +50,12 @@
 
   var listenSetupOpenEvent = function () {
     setupOpenElement.addEventListener('click', function () {
-      showElement(window.utilities.setupElement);
+      window.utilities.showElement(window.utilities.setupElement);
       addEventListenersOnSetupOpen();
     });
     setupOpenElement.addEventListener('keydown', function (evt) {
       if (evt.keyCode === ENTER_KEYCODE) {
-        showElement(window.utilities.setupElement);
+        window.utilities.showElement(window.utilities.setupElement);
         addEventListenersOnSetupOpen();
       }
     });
