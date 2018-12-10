@@ -9,12 +9,13 @@
   var SIMILAR_WIZARDS_NUMBER = 4;
   var ENTER_KEYCODE = 13;
   var ESC_KEYCODE = 27;
-
+//диалог:
   var setupElement = document.querySelector('.setup');
   var setupOpenElement = document.querySelector('.setup-open');
   var setupCloseElement = setupElement.querySelector('.setup-close');
 
   var setupWizardElement = setupElement.querySelector('.setup-wizard');
+  //диалог:
   var setupWizardNameElement = setupElement.querySelector('.setup-user-name');
   var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
@@ -24,20 +25,21 @@
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
+  // драгндроп:
   var initialSetupElementPosition = {
     left: setupElement.style.left,
     top: setupElement.style.top
   };
-
+// драгндроп:
   var restoreInitialSetupElementPosition = function () {
     setupElement.style.left = initialSetupElementPosition.left;
     setupElement.style.top = initialSetupElementPosition.top;
   };
-
+//диалог:
   var showElement = function (element) {
     element.classList.remove('hidden');
   };
-
+//диалог:
   var hideElement = function (element) {
     element.classList.add('hidden');
   };
@@ -96,19 +98,19 @@
       featureElement.style.fill = newFeature;
     }
   };
-
+//диалог:
   var setupCloseClickHandler = function () {
     hideElement(setupElement);
     document.removeEventListener('keydown', documentKeydownEscHandler);
   };
-
+//диалог:
   var setupCloseKeydownEnterHandler = function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       hideElement(setupElement);
     }
     document.removeEventListener('keydown', documentKeydownEscHandler);
   };
-
+//диалог:
   var documentKeydownEscHandler = function (evt) {
     if (evt.keyCode === ESC_KEYCODE && evt.target !== setupWizardNameElement) {
       hideElement(setupElement);
@@ -129,15 +131,19 @@
   };
 
   var addEventListenersOnSetupOpen = function () {
-    restoreInitialSetupElementPosition();
+    restoreInitialSetupElementPosition(); // драгндроп
+    //диалог:
     setupCloseElement.addEventListener('click', setupCloseClickHandler);
+    //диалог:
     setupCloseElement.addEventListener('keydown', setupCloseKeydownEnterHandler);
+    //диалог:
     document.addEventListener('keydown', documentKeydownEscHandler);
     setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
     setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
     setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
   };
 
+  //диалог:
   var listenSetupOpenEvent = function () {
     setupOpenElement.addEventListener('click', function () {
       showElement(setupElement);
@@ -152,6 +158,7 @@
   };
 
   var init = function () {
+    //диалог:
     listenSetupOpenEvent();
     var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
     renderSimilarWizards(similarWizards);
