@@ -12,20 +12,11 @@
   // Друзья-волшебники:
   var SIMILAR_WIZARDS_NUMBER = 4;
 
-  //Диалог:
-  var setupElement = document.querySelector('.setup');
-
-  //Друзья волшебники: Главный маг
-  var setupWizardElement = setupElement.querySelector('.setup-wizard');
-
 
   // Друзья-волшебники:
   var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
-
-
-
 
 
 
