@@ -9,11 +9,12 @@ var SIMILAR_WIZARDS_NUMBER = 4;
 var ENTER_KEYCODE = 13;
 var ESC_KEYCODE = 27;
 
-var setupElement = document.querySelector('.overlay');
+var setupElement = document.querySelector('.setup');
 var setupOpenElement = document.querySelector('.setup-open');
 var setupCloseElement = setupElement.querySelector('.setup-close');
 
 var setupWizardElement = setupElement.querySelector('.setup-wizard');
+var setupWizardNameElement = setupElement.querySelector('.setup-user-name');
 var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
 var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
 var setupWizardFireballElement = setupElement.querySelector('.setup-fireball-wrap');
@@ -21,6 +22,16 @@ var setupWizardFireballElement = setupElement.querySelector('.setup-fireball-wra
 var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
 var setupSimilarWizardsElement = document.querySelector('.setup-similar');
 var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
+
+var initialSetupElementPosition = {
+  left: setupElement.style.left,
+  top: setupElement.style.top
+};
+
+var restoreInitialSetupElementPosition = function () {
+  setupElement.style.left = initialSetupElementPosition.left;
+  setupElement.style.top = initialSetupElementPosition.top;
+};
 
 var showElement = function (element) {
   element.classList.remove('hidden');
@@ -98,10 +109,10 @@ var setupCloseKeydownEnterHandler = function (evt) {
 };
 
 var documentKeydownEscHandler = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && evt.target.className !== 'setup-user-name') {
+  if (evt.keyCode === ESC_KEYCODE && evt.target !== setupWizardNameElement) {
     hideElement(setupElement);
+    document.removeEventListener('keydown', documentKeydownEscHandler);
   }
-  document.removeEventListener('keydown', documentKeydownEscHandler);
 };
 
 var setupWizardCoatClickHandler = function () {
@@ -117,6 +128,7 @@ var setupWizardFireballClickHandler = function () {
 };
 
 var addEventListenersOnSetupOpen = function () {
+  restoreInitialSetupElementPosition();
   setupCloseElement.addEventListener('click', setupCloseClickHandler);
   setupCloseElement.addEventListener('keydown', setupCloseKeydownEnterHandler);
   document.addEventListener('keydown', documentKeydownEscHandler);
