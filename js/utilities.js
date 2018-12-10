@@ -2,6 +2,7 @@
 
 (function () {
   window.utilities = {
+    setupElement: document.querySelector('.setup'),
     showElement: function (element) {
       element.classList.remove('hidden');
     },

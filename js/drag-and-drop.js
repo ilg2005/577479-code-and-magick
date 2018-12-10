@@ -1,9 +1,8 @@
 'use strict';
 
 (function () {
-  var setupElement = document.querySelector('.setup');
-  var userPicElement = setupElement.querySelector('.setup-user-pic');
-  var userPicUploadElement = setupElement.querySelector('.upload input');
+  var userPicElement = window.utilities.setupElement.querySelector('.setup-user-pic');
+  var userPicUploadElement = window.utilities.setupElement.querySelector('.upload input');
 
   var userPicElementMouseDownHandler = function (evtMouseDown) {
     evtMouseDown.preventDefault();
@@ -26,8 +25,8 @@
         y: evtMouseMove.clientY
       };
 
-      setupElement.style.left = (setupElement.offsetLeft + shift.x) + 'px';
-      setupElement.style.top = (setupElement.offsetTop + shift.y) + 'px';
+      window.utilities.setupElement.style.left = (window.utilities.setupElement.offsetLeft + shift.x) + 'px';
+      window.utilities.setupElement.style.top = (window.utilities.setupElement.offsetTop + shift.y) + 'px';
     };
 
     var documentMouseUpHandler = function () {

@@ -1,18 +1,12 @@
 'use strict';
 
 (function () {
-// Друзья-волшебники:
   var SIMILAR_WIZARDS_NUMBER = 4;
 
-
-  // Друзья-волшебники:
   var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
-
-
-  // Друзья-волшебники:
   var createRandomWizard = function () {
     var wizard = {
       name: window.utilities.getRandomItem(window.backend.FIRST_NAMES) + ' ' + window.utilities.getRandomItem(window.backend.LAST_NAMES),
@@ -21,7 +15,7 @@
     };
     return wizard;
   };
-  // Друзья-волшебники:
+
   var createSimilarWizards = function (wizardsNumber) {
     var wizards = [];
     for (var i = 0; i < wizardsNumber; i++) {
@@ -29,7 +23,7 @@
     }
     return wizards;
   };
-  // Друзья-волшебники:
+
   var renderWizard = function (wizard) {
     var wizardElement = wizardTemplateElement.cloneNode(true);
 
@@ -39,7 +33,7 @@
 
     return wizardElement;
   };
-  // Друзья-волшебники:
+
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < wizards.length; i++) {
@@ -48,10 +42,7 @@
     similarListElement.appendChild(fragment);
   };
 
-  // Друзья-волшебники:
   var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
   renderSimilarWizards(similarWizards);
   window.utilities.showElement(setupSimilarWizardsElement);
-
-
 })();

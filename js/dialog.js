@@ -4,10 +4,9 @@
   var ENTER_KEYCODE = 13;
   var ESC_KEYCODE = 27;
 
-  var setupElement = document.querySelector('.setup');
   var setupOpenElement = document.querySelector('.setup-open');
-  var setupCloseElement = setupElement.querySelector('.setup-close');
-  var setupWizardNameElement = setupElement.querySelector('.setup-user-name');
+  var setupCloseElement = window.utilities.setupElement.querySelector('.setup-close');
+  var setupWizardNameElement = window.utilities.setupElement.querySelector('.setup-user-name');
 
   var showElement = function (element) {
     element.classList.remove('hidden');
@@ -18,30 +17,30 @@
   };
 
   var initialSetupElementPosition = {
-    left: setupElement.style.left,
-    top: setupElement.style.top
+    left: window.utilities.setupElement.style.left,
+    top: window.utilities.setupElement.style.top
   };
 
   var restoreInitialSetupElementPosition = function () {
-    setupElement.style.left = initialSetupElementPosition.left;
-    setupElement.style.top = initialSetupElementPosition.top;
+    window.utilities.setupElement.style.left = initialSetupElementPosition.left;
+    window.utilities.setupElement.style.top = initialSetupElementPosition.top;
   };
 
   var setupCloseClickHandler = function () {
-    hideElement(setupElement);
+    hideElement(window.utilities.setupElement);
     document.removeEventListener('keydown', documentKeydownEscHandler);
   };
 
   var setupCloseKeydownEnterHandler = function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
-      hideElement(setupElement);
+      hideElement(window.utilities.setupElement);
     }
     document.removeEventListener('keydown', documentKeydownEscHandler);
   };
 
   var documentKeydownEscHandler = function (evt) {
     if (evt.keyCode === ESC_KEYCODE && evt.target !== setupWizardNameElement) {
-      hideElement(setupElement);
+      hideElement(window.utilities.setupElement);
       document.removeEventListener('keydown', documentKeydownEscHandler);
     }
   };
@@ -55,12 +54,12 @@
 
   var listenSetupOpenEvent = function () {
     setupOpenElement.addEventListener('click', function () {
-      showElement(setupElement);
+      showElement(window.utilities.setupElement);
       addEventListenersOnSetupOpen();
     });
     setupOpenElement.addEventListener('keydown', function (evt) {
       if (evt.keyCode === ENTER_KEYCODE) {
-        showElement(setupElement);
+        showElement(window.utilities.setupElement);
         addEventListenersOnSetupOpen();
       }
     });
