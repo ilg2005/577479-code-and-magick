@@ -24,7 +24,7 @@
   var setupWizardElement = setupElement.querySelector('.setup-wizard');
   //диалог:
   var setupWizardNameElement = setupElement.querySelector('.setup-user-name');
-  //Друзья-волшебники: Главный маг
+  //Главный маг
   var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   // Главный маг:
