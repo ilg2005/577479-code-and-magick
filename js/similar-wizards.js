@@ -2,14 +2,6 @@
 
 (function () {
 // Друзья-волшебники:
-  var FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  // Друзья-волшебники:
-  var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-  // Друзья-волшебники: Главный маг
-  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-  // Друзья-волшебники: Главный маг
-  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-  // Друзья-волшебники:
   var SIMILAR_WIZARDS_NUMBER = 4;
 
 
@@ -23,9 +15,9 @@
   // Друзья-волшебники:
   var createRandomWizard = function () {
     var wizard = {
-      name: window.utilities.getRandomItem(FIRST_NAMES) + ' ' + window.utilities.getRandomItem(LAST_NAMES),
-      coatColor: window.utilities.getRandomItem(COAT_COLORS),
-      eyesColor: window.utilities.getRandomItem(EYES_COLORS)
+      name: window.utilities.getRandomItem(window.backend.FIRST_NAMES) + ' ' + window.utilities.getRandomItem(window.backend.LAST_NAMES),
+      coatColor: window.utilities.getRandomItem(window.backend.COAT_COLORS),
+      eyesColor: window.utilities.getRandomItem(window.backend.EYES_COLORS)
     };
     return wizard;
   };
