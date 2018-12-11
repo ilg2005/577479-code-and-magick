@@ -42,7 +42,10 @@
     similarListElement.appendChild(fragment);
   };
 
-  var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
-  renderSimilarWizards(similarWizards);
-  window.utilities.showElement(setupSimilarWizardsElement);
+  var init = function () {
+    var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
+    renderSimilarWizards(similarWizards);
+    window.utilities.showElement(setupSimilarWizardsElement);
+  };
+  init();
 })();
