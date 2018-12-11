@@ -9,9 +9,9 @@
 
   var createRandomWizard = function () {
     var wizard = {
-      name: window.utilities.getRandomItem(window.backend.FIRST_NAMES) + ' ' + window.utilities.getRandomItem(window.backend.LAST_NAMES),
-      coatColor: window.utilities.getRandomItem(window.backend.COAT_COLORS),
-      eyesColor: window.utilities.getRandomItem(window.backend.EYES_COLORS)
+      name: window.utilities.getRandomItem(window.consts.FIRST_NAMES) + ' ' + window.utilities.getRandomItem(window.consts.LAST_NAMES),
+      coatColor: window.utilities.getRandomItem(window.consts.COAT_COLORS),
+      eyesColor: window.utilities.getRandomItem(window.consts.EYES_COLORS)
     };
     return wizard;
   };
