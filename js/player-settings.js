@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
   var setupWizardElement = window.utilities.setupElement.querySelector('.setup-wizard');
@@ -25,10 +27,10 @@
   };
 
   var setupWizardCoatClickHandler = function () {
-    changeWizardFeature('coat-color', window.consts.COAT_COLORS, setupWizardCoatElement);
+    changeWizardFeature('coat-color', COAT_COLORS, setupWizardCoatElement);
   };
   var setupWizardEyesClickHandler = function () {
-    changeWizardFeature('eyes-color', window.consts.EYES_COLORS, setupWizardEyesElement);
+    changeWizardFeature('eyes-color', EYES_COLORS, setupWizardEyesElement);
   };
   var setupWizardFireballClickHandler = function () {
     changeWizardFeature('fireball-color', FIREBALL_COLORS, setupWizardFireballElement);
