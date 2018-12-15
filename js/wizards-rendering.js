@@ -7,43 +7,27 @@
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
-  var createRandomWizard = function () {
-    var wizard = {
-      name: window.utilities.getRandomItem(window.consts.FIRST_NAMES) + ' ' + window.utilities.getRandomItem(window.consts.LAST_NAMES),
-      coatColor: window.utilities.getRandomItem(window.consts.COAT_COLORS),
-      eyesColor: window.utilities.getRandomItem(window.consts.EYES_COLORS)
-    };
-    return wizard;
-  };
-
-  var createSimilarWizards = function (wizardsNumber) {
-    var wizards = [];
-    for (var i = 0; i < wizardsNumber; i++) {
-      wizards.push(createRandomWizard());
-    }
-    return wizards;
-  };
-
   var renderWizard = function (wizard) {
     var wizardElement = wizardTemplateElement.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardElement;
   };
 
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < wizards.length; i++) {
-      fragment.appendChild(renderWizard(wizards[i]));
+    for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
+      var randomWizard = window.utilities.getRandomItem(wizards);
+      fragment.appendChild(renderWizard(randomWizard));
     }
     similarListElement.appendChild(fragment);
   };
 
-  var onSuccessLoad = function (serverResponse) {
-    console.log(serverResponse);
+  var onSuccessLoad = function (wizards) {
+    renderSimilarWizards(wizards);
   };
 
   var onErrorLoad = function (serverResponse) {
@@ -52,8 +36,6 @@
 
   var init = function () {
     window.backend.load(onSuccessLoad, onErrorLoad);
-    var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
-    renderSimilarWizards(similarWizards);
     window.utilities.showElement(setupSimilarWizardsElement);
   };
   init();
