@@ -7,7 +7,6 @@
   var setupOpenElement = document.querySelector('.setup-open');
   var setupCloseElement = window.utilities.setupElement.querySelector('.setup-close');
   var setupWizardNameElement = window.utilities.setupElement.querySelector('.setup-user-name');
-  var formSubmitElement = window.utilities.setupElement.querySelector('.setup-submit');
 
   var hideElement = function (element) {
     element.classList.add('hidden');
