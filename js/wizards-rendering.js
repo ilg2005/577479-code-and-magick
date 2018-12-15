@@ -42,7 +42,16 @@
     similarListElement.appendChild(fragment);
   };
 
+  var onSuccessLoad = function (serverResponse) {
+    console.log(serverResponse);
+  };
+
+  var onErrorLoad = function (serverResponse) {
+    console.log(serverResponse);
+  };
+
   var init = function () {
+    window.backend.load(onSuccessLoad, onErrorLoad);
     var similarWizards = createSimilarWizards(SIMILAR_WIZARDS_NUMBER);
     renderSimilarWizards(similarWizards);
     window.utilities.showElement(setupSimilarWizardsElement);
