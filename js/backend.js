@@ -12,9 +12,9 @@
 
     xhr.addEventListener('load', function () {
       if (xhr.status === SERVER_RESPONSE_OK) {
-        onLoad(xhr.response); // в коллбэк-функцию передается ответ с данными сервера
+        onLoad(xhr.response);
       } else {
-        onError('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText); // в коллбэк-функцию передается сообщение сервера об ошибке
+        onError('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
     });
 
