@@ -5,6 +5,7 @@
   var ESC_KEYCODE = 27;
 
   var setupOpenElement = document.querySelector('.setup-open');
+  var formElement = document.querySelector('form');
   var setupCloseElement = window.utilities.setupElement.querySelector('.setup-close');
   var setupWizardNameElement = window.utilities.setupElement.querySelector('.setup-user-name');
 
@@ -41,10 +42,25 @@
     }
   };
 
+  var onSuccessSave = function () {
+    hideElement(window.utilities.setupElement);
+    window.utilities.renderSuccessMessage('Сохранено успешно!');
+  };
+
+  var onErrorSave = function (message) {
+    window.utilities.renderErrorMessage(message);
+  };
+
+  var formSubmitHandler = function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(formElement), onSuccessSave, onErrorSave);
+  };
+
   var addEventListenersOnSetupOpen = function () {
     restoreInitialSetupElementPosition();
     setupCloseElement.addEventListener('click', setupCloseClickHandler);
     setupCloseElement.addEventListener('keydown', setupCloseKeydownEnterHandler);
+    formElement.addEventListener('submit', formSubmitHandler);
     document.addEventListener('keydown', documentKeydownEscHandler);
   };
 
