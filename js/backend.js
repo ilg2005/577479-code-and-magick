@@ -35,7 +35,7 @@
       xhr.send();
     },
     save: function (data, onLoad, onError) {
-      var xhr = request(onLoad, onError);
+      var xhr = prepareRequest(onLoad, onError);
       xhr.open('POST', URL);
       xhr.send(data);
     }
