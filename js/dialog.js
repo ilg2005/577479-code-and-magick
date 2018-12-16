@@ -42,18 +42,18 @@
     }
   };
 
-  var onSuccessSave = function () {
+  var successSaveHandler = function () {
     hideElement(window.utilities.setupElement);
     window.utilities.renderSuccessMessage('Сохранено успешно!');
   };
 
-  var onErrorSave = function (message) {
+  var errorSaveHandler = function (message) {
     window.utilities.renderErrorMessage(message);
   };
 
   var formSubmitHandler = function (evt) {
     evt.preventDefault();
-    window.backend.save(new FormData(formElement), onSuccessSave, onErrorSave);
+    window.backend.save(new FormData(formElement), successSaveHandler, errorSaveHandler);
   };
 
   var addEventListenersOnSetupOpen = function () {

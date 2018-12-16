@@ -26,16 +26,16 @@
     similarListElement.appendChild(fragment);
   };
 
-  var onSuccessLoad = function (wizards) {
+  var successLoadHandler = function (wizards) {
     renderSimilarWizards(wizards);
   };
 
-  var onErrorLoad = function (serverResponse) {
+  var errorLoadHandler = function (serverResponse) {
     window.utilities.renderErrorMessage(serverResponse);
   };
 
   var init = function () {
-    window.backend.load(onSuccessLoad, onErrorLoad);
+    window.backend.load(successLoadHandler, errorLoadHandler);
     window.utilities.showElement(setupSimilarWizardsElement);
   };
   init();
