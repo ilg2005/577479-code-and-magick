@@ -1,6 +1,13 @@
 'use strict';
 
 (function () {
+  var MESSAGE_TIMEOUT = 1000;
+
+  var removeServerMessage = function (element, timeout) {
+    setTimeout(function () {
+      element.remove();
+    }, timeout);
+  };
 
   window.utilities = {
     setupElement: document.querySelector('.setup'),
@@ -13,33 +20,31 @@
       return items[randomIndex];
     },
     renderSuccessMessage: function (message) {
-      var MESSAGE_TIMEOUT = 1000;
-      var node = document.createElement('div');
-      node.style = 'z-index: 100; width: 300px; min-height: 50px; border-radius: 50px; margin: auto; text-align: center; background-color: green';
-      node.style.display = 'inline-flex';
-      node.style.justifyContent = 'center';
-      node.style.alignItems = 'center';
-      node.style.position = 'fixed';
-      node.style.top = '50%';
-      node.style.bottom = '50%';
-      node.style.left = 0;
-      node.style.right = 0;
-      node.style.fontSize = '18px';
+      var successMessageElement = document.createElement('div');
+      successMessageElement.style = 'z-index: 100; width: 300px; min-height: 50px; border-radius: 50px; margin: auto; text-align: center; background-color: green';
+      successMessageElement.style.display = 'inline-flex';
+      successMessageElement.style.justifyContent = 'center';
+      successMessageElement.style.alignItems = 'center';
+      successMessageElement.style.position = 'fixed';
+      successMessageElement.style.top = '50%';
+      successMessageElement.style.bottom = '50%';
+      successMessageElement.style.left = 0;
+      successMessageElement.style.right = 0;
+      successMessageElement.style.fontSize = '18px';
 
-      node.textContent = message;
-      document.body.insertAdjacentElement('afterbegin', node);
+      successMessageElement.textContent = message;
+      document.body.insertAdjacentElement('afterbegin', successMessageElement);
 
-      setTimeout(function () {
-        node.remove();
-      }, MESSAGE_TIMEOUT);
+      removeServerMessage(successMessageElement, MESSAGE_TIMEOUT);
     },
     renderErrorMessage: function (message) {
-      var node = document.createElement('div');
-      node.style = 'z-index: 100; width: 500px; min-height: 50px; margin: auto; text-align: center';
-      node.style.fontSize = '20px';
+      var errorMessageElement = document.createElement('div');
+      errorMessageElement.style = 'z-index: 100; width: 500px; min-height: 50px; margin: auto; text-align: center';
+      errorMessageElement.style.fontSize = '20px';
 
-      node.textContent = message;
-      document.querySelector('.setup-submit').insertAdjacentElement('beforebegin', node);
+      errorMessageElement.textContent = message;
+      document.querySelector('.setup-submit').insertAdjacentElement('beforebegin', errorMessageElement);
+      removeServerMessage(errorMessageElement, MESSAGE_TIMEOUT);
     }
   };
 })();
