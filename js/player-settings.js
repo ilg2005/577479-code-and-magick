@@ -13,6 +13,15 @@
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
 
+  var getCurrentWizardSettings = function () {
+    var currentWizardSettings = {
+      coatColor: setupWizardCoatElement.style.fill,
+      eyesColor: setupWizardEyesElement.style.fill,
+      fireballColor: setupWizardFireballElement.lastElementChild.value
+    };
+    return currentWizardSettings;
+  };
+
   var changeHiddenInputValue = function (inputName, newValue) {
     var selectorString = 'input' + '\[name=\"' + inputName + '\"\]';
     document.querySelector(selectorString).value = newValue;
@@ -41,4 +50,6 @@
   setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
   setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
   setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
+
+  window.currentWizardSettings = getCurrentWizardSettings();
 })();

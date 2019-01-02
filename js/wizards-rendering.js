@@ -17,6 +17,8 @@
     return wizardElement;
   };
 
+  console.log(window.currentWizardSettings);
+
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
