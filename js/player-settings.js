@@ -13,11 +13,10 @@
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
 
-  var getCurrentWizardSettings = function () {
+  var updateCurrentWizardSettings = function () {
     var currentWizardSettings = {
       coatColor: setupWizardCoatElement.style.fill,
       eyesColor: setupWizardEyesElement.style.fill,
-      fireballColor: setupWizardFireballElement.lastElementChild.value
     };
     return currentWizardSettings;
   };
@@ -39,9 +38,13 @@
 
   var setupWizardCoatClickHandler = function () {
     changeWizardFeature('coat-color', Color.COAT, setupWizardCoatElement);
+    window.currentWizardSettings = updateCurrentWizardSettings();
+    console.log(window.currentWizardSettings);
   };
   var setupWizardEyesClickHandler = function () {
     changeWizardFeature('eyes-color', Color.EYES, setupWizardEyesElement);
+    window.currentWizardSettings = updateCurrentWizardSettings();
+    console.log(window.currentWizardSettings);
   };
   var setupWizardFireballClickHandler = function () {
     changeWizardFeature('fireball-color', Color.FIREBALL, setupWizardFireballElement);
@@ -51,5 +54,5 @@
   setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
   setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
 
-  window.currentWizardSettings = getCurrentWizardSettings();
+  window.currentWizardSettings = updateCurrentWizardSettings();
 })();
