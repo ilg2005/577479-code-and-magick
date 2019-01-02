@@ -27,6 +27,7 @@
   };
 
   var successLoadHandler = function (wizards) {
+    window.loadedData = wizards;
     renderSimilarWizards(wizards);
   };
 
