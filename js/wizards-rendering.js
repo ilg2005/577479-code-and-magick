@@ -33,13 +33,15 @@
     });
 
     wizardsCopy.sort(function (wizard1, wizard2) {
-      if (wizard1.rank > wizard2.rank) {
-        return -1;
-      }
       if (wizard1.rank < wizard2.rank) {
         return 1;
       }
-      return 0;
+      if (wizard1.rank > wizard2.rank) {
+        return -1;
+      }
+      if (wizard1.rank === wizard2.rank) {
+        return wizard1.name.localeCompare(wizard2.name);
+      }
     });
 
     return wizardsCopy;
