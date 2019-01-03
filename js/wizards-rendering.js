@@ -2,6 +2,7 @@
 
 (function () {
   var SIMILAR_WIZARDS_NUMBER = 4;
+  var DEBOUNCE_INTERVAL = 500;
 
   var wizardTemplateElement = document.querySelector('#similar-wizard-template').content;
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
@@ -47,6 +48,8 @@
     return wizardsCopy;
   };
 
+  var timerID;
+
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
@@ -57,8 +60,13 @@
   };
 
   window.updateWizards = function (currentSettings) {
-    similarListElement.innerHTML = '';
-    renderSimilarWizards(getSimilarWizards(currentSettings));
+    if (timerID) {
+      clearTimeout(timerID);
+    }
+    timerID = setTimeout(function () {
+      similarListElement.innerHTML = '';
+      renderSimilarWizards(getSimilarWizards(currentSettings));
+    }, DEBOUNCE_INTERVAL);
   };
 
   var successLoadHandler = function (wizards) {
