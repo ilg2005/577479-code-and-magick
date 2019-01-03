@@ -9,6 +9,7 @@
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
   var loadedData;
+  var timerID;
 
   var renderWizard = function (wizard) {
     var wizardElement = wizardTemplateElement.cloneNode(true);
@@ -47,8 +48,6 @@
 
     return wizardsCopy;
   };
-
-  var timerID;
 
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
