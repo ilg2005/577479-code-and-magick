@@ -48,16 +48,20 @@
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
-      /*var randomWizard = window.utilities.getRandomItem(wizards);*/
+      /* var randomWizard = window.utilities.getRandomItem(wizards);*/
       fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
   };
 
+  window.updateWizards = function (currentSettings) {
+    similarListElement.innerHTML = '';
+    renderSimilarWizards(getSimilarWizards(currentSettings));
+  };
+
   var successLoadHandler = function (wizards) {
     loadedData = wizards;
-    var similarWizards = getSimilarWizards(window.currentSettings);
-    renderSimilarWizards(similarWizards);
+    renderSimilarWizards(getSimilarWizards(window.currentSettings));
   };
 
   var errorLoadHandler = function (serverResponse) {

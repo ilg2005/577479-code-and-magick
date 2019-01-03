@@ -38,13 +38,11 @@
 
   var setupWizardCoatClickHandler = function () {
     changeWizardFeature('coat-color', Color.COAT, setupWizardCoatElement);
-    /*window.currentWizardSettings = updateCurrentWizardSettings();
-    console.log(window.currentWizardSettings);*/
+    window.updateWizards(getCurrentSettings());
   };
   var setupWizardEyesClickHandler = function () {
     changeWizardFeature('eyes-color', Color.EYES, setupWizardEyesElement);
-    /*window.currentWizardSettings = updateCurrentWizardSettings();
-    console.log(window.currentWizardSettings);*/
+    window.updateWizards(getCurrentSettings());
   };
   var setupWizardFireballClickHandler = function () {
     changeWizardFeature('fireball-color', Color.FIREBALL, setupWizardFireballElement);
