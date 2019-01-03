@@ -7,6 +7,8 @@
   var setupSimilarWizardsElement = document.querySelector('.setup-similar');
   var similarListElement = setupSimilarWizardsElement.querySelector('.setup-similar-list');
 
+  var loadedData;
+
   var renderWizard = function (wizard) {
     var wizardElement = wizardTemplateElement.cloneNode(true);
 
@@ -17,20 +19,45 @@
     return wizardElement;
   };
 
-  console.log(window.currentWizardSettings);
+  var getSimilarWizards = function (currentSettings) {
+    var wizardsCopy = loadedData.slice();
+    wizardsCopy.forEach(function (wizard) {
+      var rank = 0;
+      if (wizard.colorCoat === currentSettings.coatColor) {
+        rank = 2;
+      }
+      if (wizard.colorEyes === currentSettings.eyesColor) {
+        rank += 1;
+      }
+      wizard.rank = rank;
+    });
+
+    wizardsCopy.sort(function (wizard1, wizard2) {
+      if (wizard1.rank > wizard2.rank) {
+        return -1;
+      }
+      if (wizard1.rank < wizard2.rank) {
+        return 1;
+      }
+      return 0;
+    });
+
+    return wizardsCopy;
+  };
 
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
-      var randomWizard = window.utilities.getRandomItem(wizards);
-      fragment.appendChild(renderWizard(randomWizard));
+      /*var randomWizard = window.utilities.getRandomItem(wizards);*/
+      fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
   };
 
   var successLoadHandler = function (wizards) {
-    window.loadedData = wizards;
-    renderSimilarWizards(wizards);
+    loadedData = wizards;
+    var similarWizards = getSimilarWizards(window.currentSettings);
+    renderSimilarWizards(similarWizards);
   };
 
   var errorLoadHandler = function (serverResponse) {

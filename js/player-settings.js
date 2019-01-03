@@ -13,12 +13,12 @@
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
 
-  var updateCurrentWizardSettings = function () {
-    var currentWizardSettings = {
+  var getCurrentSettings = function () {
+    var currentSettings = {
       coatColor: setupWizardCoatElement.style.fill,
       eyesColor: setupWizardEyesElement.style.fill,
     };
-    return currentWizardSettings;
+    return currentSettings;
   };
 
   var changeHiddenInputValue = function (inputName, newValue) {
@@ -38,13 +38,13 @@
 
   var setupWizardCoatClickHandler = function () {
     changeWizardFeature('coat-color', Color.COAT, setupWizardCoatElement);
-    window.currentWizardSettings = updateCurrentWizardSettings();
-    console.log(window.currentWizardSettings);
+    /*window.currentWizardSettings = updateCurrentWizardSettings();
+    console.log(window.currentWizardSettings);*/
   };
   var setupWizardEyesClickHandler = function () {
     changeWizardFeature('eyes-color', Color.EYES, setupWizardEyesElement);
-    window.currentWizardSettings = updateCurrentWizardSettings();
-    console.log(window.currentWizardSettings);
+    /*window.currentWizardSettings = updateCurrentWizardSettings();
+    console.log(window.currentWizardSettings);*/
   };
   var setupWizardFireballClickHandler = function () {
     changeWizardFeature('fireball-color', Color.FIREBALL, setupWizardFireballElement);
@@ -54,5 +54,5 @@
   setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
   setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
 
-  window.currentWizardSettings = updateCurrentWizardSettings();
+  window.currentSettings = getCurrentSettings();
 })();
