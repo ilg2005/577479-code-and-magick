@@ -50,7 +50,6 @@
   var renderSimilarWizards = function (wizards) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < SIMILAR_WIZARDS_NUMBER; i++) {
-      /* var randomWizard = window.utilities.getRandomItem(wizards);*/
       fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
