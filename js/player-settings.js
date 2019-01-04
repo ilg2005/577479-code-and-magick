@@ -14,11 +14,10 @@
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
 
   var getCurrentSettings = function () {
-    var currentSettings = {
+    return {
       coatColor: setupWizardCoatElement.style.fill,
       eyesColor: setupWizardEyesElement.style.fill,
     };
-    return currentSettings;
   };
 
   var changeHiddenInputValue = function (inputName, newValue) {
