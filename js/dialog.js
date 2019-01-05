@@ -1,8 +1,10 @@
 'use strict';
 
 (function () {
-  var ENTER_KEYCODE = 13;
-  var ESC_KEYCODE = 27;
+  var Keycode = {
+    ENTER: 13,
+    ESC: 27
+  };
 
   var setupOpenElement = document.querySelector('.setup-open');
   var formElement = document.querySelector('form');
@@ -29,14 +31,14 @@
   };
 
   var setupCloseKeydownEnterHandler = function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
+    if (evt.keyCode === Keycode.ENTER) {
       hideElement(window.utilities.setupElement);
     }
     document.removeEventListener('keydown', documentKeydownEscHandler);
   };
 
   var documentKeydownEscHandler = function (evt) {
-    if (evt.keyCode === ESC_KEYCODE && evt.target !== setupWizardNameElement) {
+    if (evt.keyCode === Keycode.ESC && evt.target !== setupWizardNameElement) {
       hideElement(window.utilities.setupElement);
       document.removeEventListener('keydown', documentKeydownEscHandler);
     }
@@ -70,7 +72,7 @@
       addEventListenersOnSetupOpen();
     });
     setupOpenElement.addEventListener('keydown', function (evt) {
-      if (evt.keyCode === ENTER_KEYCODE) {
+      if (evt.keyCode === Keycode.ENTER) {
         window.utilities.showElement(window.utilities.setupElement);
         addEventListenersOnSetupOpen();
       }

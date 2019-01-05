@@ -1,15 +1,24 @@
 'use strict';
 
 (function () {
-  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-  var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+  var Color = {
+    COAT: ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'],
+    EYES: ['black', 'red', 'blue', 'yellow', 'green'],
+    FIREBALL: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
+  };
 
   var setupWizardElement = window.utilities.setupElement.querySelector('.setup-wizard');
 
   var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
+
+  var getCurrentSettings = function () {
+    return {
+      coatColor: setupWizardCoatElement.style.fill,
+      eyesColor: setupWizardEyesElement.style.fill,
+    };
+  };
 
   var changeHiddenInputValue = function (inputName, newValue) {
     var selectorString = 'input' + '\[name=\"' + inputName + '\"\]';
@@ -27,16 +36,20 @@
   };
 
   var setupWizardCoatClickHandler = function () {
-    changeWizardFeature('coat-color', COAT_COLORS, setupWizardCoatElement);
+    changeWizardFeature('coat-color', Color.COAT, setupWizardCoatElement);
+    window.updateWizards(getCurrentSettings());
   };
   var setupWizardEyesClickHandler = function () {
-    changeWizardFeature('eyes-color', EYES_COLORS, setupWizardEyesElement);
+    changeWizardFeature('eyes-color', Color.EYES, setupWizardEyesElement);
+    window.updateWizards(getCurrentSettings());
   };
   var setupWizardFireballClickHandler = function () {
-    changeWizardFeature('fireball-color', FIREBALL_COLORS, setupWizardFireballElement);
+    changeWizardFeature('fireball-color', Color.FIREBALL, setupWizardFireballElement);
   };
 
   setupWizardCoatElement.addEventListener('click', setupWizardCoatClickHandler);
   setupWizardEyesElement.addEventListener('click', setupWizardEyesClickHandler);
   setupWizardFireballElement.addEventListener('click', setupWizardFireballClickHandler);
+
+  window.currentSettings = getCurrentSettings();
 })();
