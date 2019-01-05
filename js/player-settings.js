@@ -8,7 +8,6 @@
   };
 
   var setupWizardElement = window.utilities.setupElement.querySelector('.setup-wizard');
-
   var setupWizardCoatElement = setupWizardElement.querySelector('.wizard-coat');
   var setupWizardEyesElement = setupWizardElement.querySelector('.wizard-eyes');
   var setupWizardFireballElement = window.utilities.setupElement.querySelector('.setup-fireball-wrap');
