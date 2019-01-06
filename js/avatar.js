@@ -4,9 +4,8 @@
   var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
   var fileChooser = document.querySelector('.upload input[type=file]');
 
-  fileChooser.addEventListener('change', function () {
-    var file = fileChooser.files[0];
-    var fileName = file.name.toLowerCase();
+  var fileRead = function (fileToRead) {
+    var fileName = fileToRead.name.toLowerCase();
 
     var matches = FILE_TYPES.some(function (it) {
       return fileName.endsWith(it);
@@ -20,8 +19,26 @@
         window.setupOpenElement.firstElementChild.src = reader.result;
       });
 
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(fileToRead);
     }
-  });
+  };
 
+  var fileChooserChangeHandler = function () {
+    var selectedFile = fileChooser.files[0];
+    fileRead(selectedFile);
+  };
+
+  var userPicElementDragoverHandler = function (evt) {
+    evt.preventDefault();
+  };
+
+  var userPicElementDropHandler = function (evt) {
+    evt.preventDefault();
+    var droppedFile = evt.dataTransfer.files[0];
+    fileRead(droppedFile);
+  };
+
+  fileChooser.addEventListener('change', fileChooserChangeHandler);
+  window.userPicElement.addEventListener('dragover', userPicElementDragoverHandler);
+  window.userPicElement.addEventListener('drop', userPicElementDropHandler);
 })();
