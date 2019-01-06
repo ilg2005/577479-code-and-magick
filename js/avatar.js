@@ -4,7 +4,7 @@
   var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
   var fileChooser = document.querySelector('.upload input[type=file]');
 
-  var fileRead = function (fileToRead) {
+  var readFile = function (fileToRead) {
     var fileName = fileToRead.name.toLowerCase();
 
     var matches = FILE_TYPES.some(function (it) {
@@ -25,7 +25,7 @@
 
   var fileChooserChangeHandler = function () {
     var selectedFile = fileChooser.files[0];
-    fileRead(selectedFile);
+    readFile(selectedFile);
   };
 
   var userPicElementDragoverHandler = function (evt) {
@@ -35,7 +35,7 @@
   var userPicElementDropHandler = function (evt) {
     evt.preventDefault();
     var droppedFile = evt.dataTransfer.files[0];
-    fileRead(droppedFile);
+    readFile(droppedFile);
   };
 
   fileChooser.addEventListener('change', fileChooserChangeHandler);
