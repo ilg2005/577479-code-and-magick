@@ -80,4 +80,5 @@
   };
 
   listenSetupOpenEvent();
+  window.setupOpenElement = setupOpenElement;
 })();

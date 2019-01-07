@@ -42,4 +42,6 @@
   };
 
   userPicElement.addEventListener('mousedown', userPicElementMouseDownHandler);
+
+  window.userPicElement = userPicElement;
 })();
